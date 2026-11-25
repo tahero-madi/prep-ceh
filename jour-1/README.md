@@ -36,4 +36,4 @@ informations publiques, hôtes vivants, ports, services et comptes — dans un l
 - [ ] Ouvrir un terminal Linux et naviguer (`cd`, `ls`, `cat`, `man`)
 - [ ] Notions de port, service, adresse IP
 - [ ] Différence passif / actif en reconnaissance
-- [ ] Laboratoire installé et **isolement vérifié** (`ping` cible OK, `ping 8.8.8.8` KO)
+- [ ] Laboratoire installé et **réseau vérifié** (`ping` vers la cible OK)

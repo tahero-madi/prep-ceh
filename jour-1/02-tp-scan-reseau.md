@@ -10,8 +10,8 @@
 
 ## Périmètre
 
-Cible **unique** : la VM **Metasploitable 2**, dans le réseau isolé `lab-ceh`. Vérifier d'abord
-l'isolement (voir le guide d'installation, §6). Remplacer `<CIBLE>` par l'IP de Metasploitable.
+Cible **unique** : la VM **Metasploitable 2**, dans le réseau `lab-ceh`. Vérifier d'abord que Kali
+voit la cible (voir le guide d'installation, §6). Remplacer `<CIBLE>` par l'IP de Metasploitable.
 
 ---
 

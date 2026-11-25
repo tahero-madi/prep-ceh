@@ -1,8 +1,8 @@
 # Jour 1 — Guide d'installation du laboratoire
 
 À réaliser **avant la séance**. Objectif : disposer, sur votre portable, de deux machines virtuelles
-(**Kali Linux** = attaquant, **Metasploitable 2** = cible) connectées entre elles dans un **réseau
-isolé**, sans aucun accès à Internet ni au réseau de l'école.
+(**Kali Linux** = attaquant, **Metasploitable 2** = cible) connectées entre elles en **réseau NAT** :
+elles se voient entre elles et gardent un accès Internet, ce qui simplifie l'installation des outils.
 
 Temps estimé : 45 à 60 min (téléchargements compris).
 
@@ -61,28 +61,29 @@ Ajouter*).
 
 ---
 
-## 4. Configurer le réseau isolé (étape critique)
+## 4. Configurer le réseau (full NAT)
 
-Les deux VM doivent se voir **entre elles**, mais **ni Internet, ni le réseau de l'école**. On
-supprime donc tout adaptateur NAT ou ponté (bridged).
+On met les deux VM en **NAT** : elles se voient entre elles et gardent un accès Internet, ce qui
+simplifie l'installation et la mise à jour des outils de Kali.
 
-### 4.1 VirtualBox — « Réseau interne »
+> ⚠️ **À savoir.** En NAT, la cible Metasploitable a aussi un accès Internet sortant. C'est un choix
+> de simplicité assumé pour ce module. En contrepartie : ne laissez pas le labo tourner sans
+> surveillance et **éteignez les VM après usage**.
 
-Pour **chaque** VM (Kali et Metasploitable) : *Configuration → Réseau → Adaptateur 1* :
-- **Activer** l'adaptateur réseau
-- *Mode d'accès réseau* : **Réseau interne**
-- *Nom* : `lab-ceh` (exactement le même nom sur les deux VM)
-- Désactiver tout autre adaptateur (2, 3, 4)
+### 4.1 VirtualBox — « Réseau NAT »
 
-### 4.2 VMware — « LAN Segment »
+Le *NAT* simple de VirtualBox isole les VM les unes des autres. Pour qu'elles se voient, il faut un
+**Réseau NAT** partagé :
 
-Pour **chaque** VM : *VM → Settings → Network Adapter* :
-- **Custom** → *LAN Segment* → créer `lab-ceh` et l'affecter aux deux VM
-- Décocher *Connect at power on* pour tout adaptateur NAT/Bridged, ou le retirer
+1. *Fichier → Outils → Gestionnaire de réseau → onglet Réseaux NAT* (ou *Fichier → Préférences →
+   Réseau* selon la version) → **Créer** un réseau NAT nommé `lab-ceh` (ex. `10.0.2.0/24`, DHCP activé).
+2. Pour **chaque** VM : *Configuration → Réseau → Adaptateur 1* → *Mode d'accès réseau* : **Réseau
+   NAT** → *Nom* : `lab-ceh`.
 
-> 🔒 **Règle d'or du cours** : si une VM a besoin d'Internet (mise à jour de Kali, installation d'un
-> outil), on bascule temporairement **Kali seul** en NAT, on fait la mise à jour, puis on **repasse en
-> réseau isolé** avant tout TP. Metasploitable, elle, ne doit **jamais** voir Internet.
+### 4.2 VMware — « NAT »
+
+Pour **chaque** VM : *VM → Settings → Network Adapter* → **NAT**. Les VM en NAT partagent le même
+sous-réseau (VMnet8) : elles se voient et ont Internet. Rien d'autre à configurer.
 
 ---
 
@@ -93,20 +94,19 @@ Pour **chaque** VM : *VM → Settings → Network Adapter* :
 | Kali Linux | `kali` | `kali` |
 | Metasploitable 2 | `msfadmin` | `msfadmin` |
 
-Donner à chaque VM une IP dans le même sous-réseau. Le plus simple : laisser Metasploitable prendre
-son IP automatiquement, et fixer Kali dans le même `/24`. Exemple manuel sur Kali :
+En NAT, le **DHCP attribue les adresses automatiquement** : aucune configuration IP manuelle. Relever
+simplement l'adresse de chaque VM :
 
 ```bash
-sudo ip addr add 192.168.56.10/24 dev eth0
-sudo ip link set eth0 up
+ip a            # sur Kali (interface eth0)
+ifconfig        # sur Metasploitable
 ```
 
-Sur Metasploitable, relever l'IP avec `ifconfig` (souvent `192.168.56.x` ou `10.0.x.x`) et aligner
-Kali sur le même sous-réseau.
+Les deux VM se retrouvent dans le même sous-réseau (ex. `10.0.2.x`).
 
 ---
 
-## 6. Vérifier l'isolement (obligatoire avant tout TP)
+## 6. Vérifier le réseau (avant tout TP)
 
 Depuis **Kali** :
 
@@ -114,12 +114,12 @@ Depuis **Kali** :
 # 1) Je vois la cible
 ping -c 3 <IP_de_Metasploitable>        # doit répondre
 
-# 2) Je ne vois PAS Internet
-ping -c 3 8.8.8.8                        # doit échouer (100% packet loss)
+# 2) Internet fonctionne (utile pour installer/mettre à jour les outils)
+ping -c 3 8.8.8.8                        # répond en NAT
 ```
 
-Les deux conditions doivent être vraies : la cible répond, Internet est injoignable. Si `8.8.8.8`
-répond, le réseau n'est pas isolé → revoir l'étape 4 **avant** de continuer.
+Si la cible répond, vous pouvez enchaîner les TP. Si le `ping` vers la cible échoue, vérifier que les
+deux VM sont bien sur le même réseau NAT `lab-ceh` (VirtualBox) ou en NAT (VMware).
 
 ---
 
@@ -140,8 +140,8 @@ Un snapshot permet de tout remettre à zéro en 30 secondes si une VM est cassé
 | --- | --- |
 | La VM ne démarre qu'en 32 bits | Virtualisation désactivée dans le BIOS, ou Hyper-V actif (Windows) |
 | « VT-x is disabled » | Activer VT-x/AMD-V dans le BIOS |
-| Kali et la cible ne se pingent pas | Même nom de réseau interne / LAN Segment sur les deux ? Adaptateurs activés ? IP dans le même `/24` ? |
-| `8.8.8.8` répond | Un adaptateur NAT/bridged est resté actif → le désactiver |
+| Kali et la cible ne se pingent pas | Même réseau NAT `lab-ceh` (VirtualBox) ou NAT (VMware) sur les deux VM ? Adaptateurs activés ? |
+| Pas d'accès Internet depuis Kali | Vérifier que l'adaptateur est en Réseau NAT / NAT et que le DHCP du réseau NAT est activé |
 | Écran noir / lenteur extrême | Réduire la RAM/les cœurs alloués, désactiver l'accélération 3D |
 
 ---
@@ -149,7 +149,7 @@ Un snapshot permet de tout remettre à zéro en 30 secondes si une VM est cassé
 ## Checklist finale (avant la séance)
 
 - [ ] Kali et Metasploitable importées et démarrables
-- [ ] Réseau isolé configuré (réseau interne / LAN Segment `lab-ceh`)
-- [ ] `ping` cible **OK**, `ping 8.8.8.8` **KO**
+- [ ] Réseau NAT configuré (`lab-ceh` sur VirtualBox, ou NAT sur VMware)
+- [ ] `ping` vers la cible **OK**
 - [ ] Snapshot `etat-initial` pris sur les deux VM
 - [ ] Identifiants testés

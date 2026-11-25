@@ -16,7 +16,7 @@ La reconnaissance ne se pratique que sur une cible autorisée. Pour ce TP :
   `jour-1/ressources/` ou distribués en séance).
 - Démonstration d'outils **uniquement** sur des cibles publiques explicitement autorisées à
   l'entraînement : `scanme.nmap.org`, `example.com`. **Jamais** sur un domaine réel non autorisé.
-- Pour les outils nécessitant Internet, basculer **Kali seul** en NAT, puis revenir au réseau isolé.
+- Les outils nécessitant Internet fonctionnent directement (les VM sont en NAT).
 
 ---
 

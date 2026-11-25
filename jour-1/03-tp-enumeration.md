@@ -10,7 +10,7 @@
 
 ## Périmètre
 
-Cible **unique** : **Metasploitable 2** dans le réseau isolé. Partir du tableau ports/services du
+Cible **unique** : **Metasploitable 2** dans le réseau `lab-ceh`. Partir du tableau ports/services du
 TP 2. Remplacer `<CIBLE>` par l'IP de la cible.
 
 ---
