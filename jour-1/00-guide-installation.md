@@ -28,7 +28,7 @@ Temps estimé : 45 à 60 min (téléchargements compris).
 | Machine | Rôle | Source |
 | --- | --- | --- |
 | **Kali Linux** (image VM préconstruite) | Attaquant | `kali.org` → *Get Kali* → *Virtual Machines* (choisir VMware **ou** VirtualBox) |
-| **Metasploitable 2** | Cible Linux vulnérable | Dépôt officiel Rapid7 / SourceForge (`metasploitable-linux-2.0.0.zip`) |
+| **Metasploitable 2** | Cible Linux vulnérable | [sourceforge.net/projects/metasploitable](https://sourceforge.net/projects/metasploitable/) (`metasploitable-linux-2.0.0.zip`) |
 
 Télécharger l'image **Kali** correspondant à votre hyperviseur (archive `.7z` VMware ou `.7z` VirtualBox).
 Metasploitable 2 est une archive contenant un fichier `.vmdk` utilisable par les deux hyperviseurs.
