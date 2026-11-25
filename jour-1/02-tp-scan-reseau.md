@@ -80,4 +80,4 @@ Un **tableau ports / services / versions** de la cible :
 ## Attention
 
 - Un scan `-p-` + `-sV` peut être long : lancer, puis enchaîner sur Wireshark pendant qu'il tourne.
-- Rester **sur la seule cible autorisée**. Aucun scan hors du segment isolé.
+- Rester **sur la seule cible autorisée** (Metasploitable). Aucun scan vers une autre machine.

@@ -24,7 +24,7 @@ informations publiques, hôtes vivants, ports, services et comptes — dans un l
 
 | Fichier | Contenu |
 | --- | --- |
-| [`00-guide-installation.md`](00-guide-installation.md) | Montage du lab (VMware & VirtualBox, réseau isolé) |
+| [`00-guide-installation.md`](00-guide-installation.md) | Montage du lab (VMware & VirtualBox, réseau NAT) |
 | [`01-tp-reconnaissance-osint.md`](01-tp-reconnaissance-osint.md) | TP 1 — footprinting et OSINT |
 | [`02-tp-scan-reseau.md`](02-tp-scan-reseau.md) | TP 2 — scan Nmap + Wireshark |
 | [`03-tp-enumeration.md`](03-tp-enumeration.md) | TP 3 — énumération des services |
