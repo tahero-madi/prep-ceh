@@ -1,6 +1,6 @@
 # TP 3 — Énumération des services
 
-**Phase CEH :** 2. Scan (énumération) · **Durée :** ~1 h 15 · **Binôme**
+**Phase CEH :** 2. Scan (énumération) · **Durée :** ~1 h 15 · **Rendu individuel**
 
 ## Objectifs
 

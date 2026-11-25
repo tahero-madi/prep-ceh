@@ -28,7 +28,7 @@ informations publiques, hôtes vivants, ports, services et comptes — dans un l
 | [`01-tp-reconnaissance-osint.md`](01-tp-reconnaissance-osint.md) | TP 1 — footprinting et OSINT |
 | [`02-tp-scan-reseau.md`](02-tp-scan-reseau.md) | TP 2 — scan Nmap + Wireshark |
 | [`03-tp-enumeration.md`](03-tp-enumeration.md) | TP 3 — énumération des services |
-| [`grille-compte-rendu.md`](grille-compte-rendu.md) | Modèle de compte rendu + barème |
+| [`grille-compte-rendu.md`](grille-compte-rendu.md) | Modèle de compte rendu (rendu individuel, envoi Teams) + barème |
 
 ## Prérequis étudiants (validés en début de séance)
 

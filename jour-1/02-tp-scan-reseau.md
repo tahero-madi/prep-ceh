@@ -1,6 +1,6 @@
 # TP 2 — Scan de réseau (Nmap & Wireshark)
 
-**Phase CEH :** 2. Scan · **Durée :** ~1 h 15 · **Binôme**
+**Phase CEH :** 2. Scan · **Durée :** ~1 h 15 · **Rendu individuel**
 
 ## Objectifs
 

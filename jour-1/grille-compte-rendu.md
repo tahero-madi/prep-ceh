@@ -1,6 +1,9 @@
 # Jour 1 — Grille de compte rendu
 
-**Binôme :** _______________________  ·  **Date :** __________
+**Nom, prénom :** _______________________  ·  **Date :** __________
+
+> 📌 **Rendu individuel.** Chaque étudiant rend son **propre** compte rendu — pas de travail en binôme.
+> Envoyez-le en **message privé au formateur sur Microsoft Teams** (fichier PDF ou Markdown).
 
 Rendre un compte rendu clair et reproductible : commandes exactes, captures utiles, et surtout les
 **contre-mesures**. Un bon test mal rapporté ne sert à personne.

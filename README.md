@@ -27,5 +27,5 @@ déjà installé. Pas d'ESXi ni d'infrastructure centralisée : tout tourne en l
 ## Démarrage rapide (Jour 1)
 
 1. Suivre [`jour-1/00-guide-installation.md`](jour-1/00-guide-installation.md) **avant** la séance.
-2. Dérouler les TP 1 à 3, puis rendre le compte rendu
-   ([`jour-1/grille-compte-rendu.md`](jour-1/grille-compte-rendu.md)).
+2. Dérouler les TP 1 à 3, puis rendre le compte rendu **individuel**
+   ([`jour-1/grille-compte-rendu.md`](jour-1/grille-compte-rendu.md)) en message privé au formateur sur Teams.

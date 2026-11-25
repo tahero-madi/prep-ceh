@@ -1,6 +1,6 @@
 # TP 1 — Reconnaissance (footprinting & OSINT)
 
-**Phase CEH :** 1. Reconnaissance · **Durée :** ~1 h 15 · **Binôme**
+**Phase CEH :** 1. Reconnaissance · **Durée :** ~1 h 15 · **Rendu individuel**
 
 ## Objectifs
 
