@@ -6,14 +6,14 @@ informations publiques, hôtes vivants, ports, services et comptes — dans un l
 ## Avant la séance
 
 1. Installer le laboratoire : [`00-guide-installation.md`](00-guide-installation.md).
-2. Lire la charte : [`charte-ethique.md`](charte-ethique.md) (signature en séance).
+2. Vérifier que Kali voit la cible (voir le guide, §6).
 
 ## Déroulé
 
 | Créneau | Activité |
 | --- | --- |
 | 9h00–10h15 | Cours : cadre légal, 5 phases, mise en route du lab |
-| 10h15–11h00 | Vérification des installations + signature de la charte |
+| 10h15–11h00 | Vérification des installations + cadre légal (à l'oral) |
 | 11h00–12h30 | **TP 1 — Reconnaissance / OSINT** |
 | 13h30–15h30 | **TP 2 — Scan de réseau** (Nmap & Wireshark) |
 | 15h30–17h00 | **TP 3 — Énumération** |
@@ -29,7 +29,6 @@ informations publiques, hôtes vivants, ports, services et comptes — dans un l
 | [`02-tp-scan-reseau.md`](02-tp-scan-reseau.md) | TP 2 — scan Nmap + Wireshark |
 | [`03-tp-enumeration.md`](03-tp-enumeration.md) | TP 3 — énumération des services |
 | [`grille-compte-rendu.md`](grille-compte-rendu.md) | Modèle de compte rendu + barème |
-| [`charte-ethique.md`](charte-ethique.md) | Charte à signer |
 
 ## Prérequis étudiants (validés en début de séance)
 

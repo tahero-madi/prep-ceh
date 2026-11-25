@@ -6,7 +6,7 @@ Ce dépôt contient, jour par jour, le guide d'installation du laboratoire et le
 > ⚠️ **Cadre strict.** Tout ce qui est décrit ici s'utilise **uniquement** dans le laboratoire isolé du
 > cours ou sur un périmètre explicitement autorisé par écrit. Scanner, énumérer ou attaquer un
 > système sans autorisation est un délit (France : articles 323-1 à 323-8 du Code pénal — jusqu'à
-> 3 ans de prison et 100 000 € d'amende). Voir [`jour-1/charte-ethique.md`](jour-1/charte-ethique.md).
+> 3 ans de prison et 100 000 € d'amende).
 
 ## Organisation
 
@@ -27,6 +27,5 @@ déjà installé. Pas d'ESXi ni d'infrastructure centralisée : tout tourne en l
 ## Démarrage rapide (Jour 1)
 
 1. Suivre [`jour-1/00-guide-installation.md`](jour-1/00-guide-installation.md) **avant** la séance.
-2. En séance : lire et signer [`jour-1/charte-ethique.md`](jour-1/charte-ethique.md).
-3. Dérouler les TP 1 à 3, puis rendre le compte rendu
+2. Dérouler les TP 1 à 3, puis rendre le compte rendu
    ([`jour-1/grille-compte-rendu.md`](jour-1/grille-compte-rendu.md)).
