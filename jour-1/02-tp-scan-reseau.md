@@ -19,8 +19,13 @@ voit la cible (voir le guide d'installation, §6). Remplacer `<CIBLE>` par l'IP 
 
 ```bash
 # Quelles machines répondent sur le segment ?
+# Remplacez le sous-réseau par celui de VOTRE réseau NAT.
 sudo nmap -sn 192.168.56.0/24
 ```
+
+> **À adapter :** `192.168.56.0/24` n'est qu'un exemple. Utilisez le sous-réseau de vos VM, relevé au
+> guide d'installation (§5) — souvent `10.0.2.0/24` avec le réseau NAT de VirtualBox, ou le sous-réseau
+> VMnet8 sous VMware. En cas de doute : `ip a` sur Kali vous donne votre adresse et donc le `/24`.
 
 Noter l'IP de la cible. Rôle de chaque hôte détecté ?
 
