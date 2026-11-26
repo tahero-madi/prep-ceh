@@ -30,28 +30,11 @@ smbclient //<CIBLE>/tmp -N
 
 Relever : noms d'utilisateurs, partages accessibles, niveau d'authentification requis.
 
-## Partie B — SNMP
+> 💡 **SNMP ?** On n'énumère pas SNMP aujourd'hui : il est **désactivé par défaut** sur Metasploitable 2
+> (il n'écoute que sur `localhost`) et on ne modifie pas la cible. SNMP est abordé en **théorie** dans le
+> cours ; on retient surtout qu'une communauté restée sur `public` livrerait toute la configuration.
 
-> ⚠️ **Prérequis.** Sur un Metasploitable 2 **non modifié**, SNMP n'écoute que sur `localhost` : le
-> `snmpwalk` depuis Kali ne renvoie rien. Il faut l'ouvrir **une fois** sur la cible (idéalement déjà
-> fait dans le snapshot « corrigé » par l'enseignant) :
->
-> ```bash
-> # Sur Metasploitable (login msfadmin / msfadmin) :
-> sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/default/snmpd
-> sudo /etc/init.d/snmpd restart
-> ```
->
-> Vérifier ensuite depuis Kali que le port est ouvert : `nmap -sU -p 161 <CIBLE>` → `161/udp open snmp`.
-
-```bash
-# Parcourir l'arbre SNMP avec la communauté par défaut
-snmpwalk -v1 -c public <CIBLE>
-```
-
-Que révèle une communauté restée sur `public` ? (processus, interfaces, parfois comptes)
-
-## Partie C — NFS, SMTP, DNS
+## Partie B — NFS, SMTP, DNS
 
 ```bash
 # Partages NFS exportés
@@ -64,14 +47,13 @@ nmap -p25 --script smtp-enum-users <CIBLE>
 dig axfr @<CIBLE> <domaine-du-lab>
 ```
 
-## Partie D — Contre-mesures
+## Partie C — Contre-mesures
 
 Pour **chaque** service énuméré, proposer un durcissement concret :
 
 | Service | Information fuitée | Durcissement |
 | --- | --- | --- |
 | SMB | comptes, partages | désactiver le listing anonyme, restreindre par ACL |
-| SNMP | config complète | changer la communauté, passer en SNMPv3, filtrer |
 | NFS | exports | limiter aux hôtes autorisés, `root_squash` |
 | SMTP | comptes valides | désactiver VRFY/EXPN |
 | DNS | zone complète | restreindre les transferts de zone aux secondaires |
@@ -81,7 +63,7 @@ Pour **chaque** service énuméré, proposer un durcissement concret :
 ## Livrable
 
 1. **Liste des comptes et partages** découverts sur la cible.
-2. Pour chacun, **une** recommandation de durcissement (tableau Partie D).
+2. Pour chacun, **une** recommandation de durcissement (tableau Partie C).
 
 À reporter dans [`grille-compte-rendu.md`](grille-compte-rendu.md).
 
