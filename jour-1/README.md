@@ -29,6 +29,7 @@ informations publiques, hôtes vivants, ports, services et comptes — dans un l
 | [`02-tp-scan-reseau.md`](02-tp-scan-reseau.md) | TP 2 — scan Nmap + Wireshark |
 | [`03-tp-enumeration.md`](03-tp-enumeration.md) | TP 3 — énumération des services |
 | [`grille-compte-rendu.md`](grille-compte-rendu.md) | Modèle de compte rendu (rendu individuel, envoi Teams) + barème |
+| [`grille-compte-rendu.docx`](grille-compte-rendu.docx) | Même grille au format Word, à remplir et à rendre |
 
 ## Prérequis étudiants (validés en début de séance)
 
