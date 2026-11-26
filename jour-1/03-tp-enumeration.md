@@ -32,6 +32,18 @@ Relever : noms d'utilisateurs, partages accessibles, niveau d'authentification r
 
 ## Partie B — SNMP
 
+> ⚠️ **Prérequis.** Sur un Metasploitable 2 **non modifié**, SNMP n'écoute que sur `localhost` : le
+> `snmpwalk` depuis Kali ne renvoie rien. Il faut l'ouvrir **une fois** sur la cible (idéalement déjà
+> fait dans le snapshot « corrigé » par l'enseignant) :
+>
+> ```bash
+> # Sur Metasploitable (login msfadmin / msfadmin) :
+> sudo sed -i 's/127.0.0.1/0.0.0.0/' /etc/default/snmpd
+> sudo /etc/init.d/snmpd restart
+> ```
+>
+> Vérifier ensuite depuis Kali que le port est ouvert : `nmap -sU -p 161 <CIBLE>` → `161/udp open snmp`.
+
 ```bash
 # Parcourir l'arbre SNMP avec la communauté par défaut
 snmpwalk -v1 -c public <CIBLE>
