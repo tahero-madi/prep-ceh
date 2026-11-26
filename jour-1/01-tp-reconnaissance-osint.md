@@ -5,79 +5,72 @@
 ## Objectifs
 
 - Distinguer reconnaissance **passive** et **active**.
-- Collecter, sans toucher directement la cible, les informations qui préparent une attaque.
+- Collecter, sans toucher la cible, les informations qui préparent une attaque.
 - Produire une **cartographie de la surface d'attaque**.
 
-## Règle de périmètre
+## Cible et périmètre
 
-La reconnaissance ne se pratique que sur une cible autorisée. Pour ce TP :
+- **Chaque étudiant choisit une organisation réelle** : une grande entreprise, une université, une
+  marque connue, un média… Si vous hésitez, demandez une suggestion à l'enseignant.
+- **Reconnaissance passive uniquement** : on lit des informations *publiques* (WHOIS, DNS, certificats,
+  pages web, réseaux sociaux). On **ne scanne pas**, on **ne se connecte pas**, on ne contacte pas la cible.
+- Le scan et l'énumération **actifs** se font au **TP 2 et au TP 3, sur Metasploitable, dans le labo** —
+  jamais sur la cible du TP 1.
+- Les outils fonctionnent directement (VM en réseau NAT, accès Internet).
 
-- Travail principal sur le **dossier d'organisation fictive** fourni par l'enseignant (fichiers dans
-  `jour-1/ressources/` ou distribués en séance).
-- Démonstration d'outils **uniquement** sur des cibles publiques explicitement autorisées à
-  l'entraînement : `scanme.nmap.org`, `example.com`. **Jamais** sur un domaine réel non autorisé.
-- Les outils nécessitant Internet fonctionnent directement (les VM sont en NAT).
+> Dans les commandes, remplacez `<domaine>` par le domaine de la cible que vous avez choisie.
 
----
+## Partie A — Reconnaissance passive (sources publiques)
 
-## Partie A — Reconnaissance passive (sans contact direct)
-
-À partir du dossier fictif et des sources publiques autorisées, renseigner :
-
-1. **WHOIS** — propriétaire, dates, contacts techniques d'un domaine.
+1. **WHOIS** — propriétaire, dates, contacts techniques.
    ```bash
-   whois example.com
+   whois <domaine>
    ```
 2. **DNS** — enregistrements A, MX, NS, TXT.
    ```bash
-   host -t A example.com
-   host -t MX example.com
-   dig example.com ANY +noall +answer
+   host -t A <domaine>
+   host -t MX <domaine>
+   dig <domaine> ANY +noall +answer
    ```
-3. **Sous-domaines & certificats** — notion de *Certificate Transparency* (ex. `crt.sh` dans un
-   navigateur). Lister les sous-domaines visibles.
-4. **Empreinte humaine** — à partir du dossier fictif : adresses e-mail, format des identifiants
-   (`prenom.nom@…`), technologies mentionnées, profils publics.
-
-> 💡 **Shodan / Google dorks** : à présenter en démonstration par l'enseignant. Comprendre le principe
-> (`site:`, `filetype:`, `intitle:`) sans cibler d'organisation réelle.
+3. **Sous-domaines & certificats** — *Certificate Transparency* via `crt.sh` (dans le navigateur) :
+   lister les sous-domaines visibles.
+4. **Empreinte humaine** — adresses e-mail, format des identifiants (`prenom.nom@…`), technologies
+   mentionnées, profils publics.
 
 ## Partie B — Outils de collecte
 
-Sur une cible autorisée (`example.com`) ou le dossier fictif :
-
 ```bash
-# Collecte d'e-mails, sous-domaines, hôtes
-theHarvester -d example.com -b bing
+# Collecte d'e-mails, sous-domaines et hôtes
+theHarvester -d <domaine> -b bing
 
-# Cartographie des relations (lancer l'interface, explorer un transform)
-maltego   # optionnel, en démonstration
+# Cartographie des relations (démonstration)
+maltego
 ```
 
-Noter pour chaque outil : **quelle information** il apporte et **si elle est passive ou active**.
+Pour chaque outil, notez **quelle information** il apporte et vérifiez que vous restez en **passif**.
+
+> 💡 **Google dorks / Shodan** : à présenter en démonstration. Comprendre le principe (`site:`,
+> `filetype:`, `intitle:`) sans lancer d'action intrusive.
 
 ## Partie C — Contre-mesures
 
-Pour chaque type d'information trouvée, proposer **une** mesure de réduction d'exposition
-(ex. : limiter les données WHOIS, cloisonner les sous-domaines de test, sensibiliser au format des
-e-mails).
-
----
+Pour chaque type d'information trouvée, proposez **une** mesure de réduction d'exposition
+(anonymiser le WHOIS, cloisonner les sous-domaines de test, sensibiliser au format des e-mails…).
 
 ## Livrable
 
-Une **cartographie de la surface d'attaque** (1 page) contenant :
+Une **cartographie de la surface d'attaque** de la cible choisie (1 page) :
 
-- Domaine(s) et sous-domaines identifiés
+- Cible choisie (domaine)
+- Domaine et sous-domaines identifiés
 - Adresses e-mail et format des identifiants
 - Technologies / services devinés
 - Plages d'adresses éventuelles
 - 3 contre-mesures priorisées
 
-Reporter le résultat dans [`grille-compte-rendu.md`](grille-compte-rendu.md).
+À reporter dans [`grille-compte-rendu.md`](grille-compte-rendu.md).
 
-## Pour aller plus vite / plus loin
+## Rappel important
 
-- Ce qui est **passif** ne laisse aucune trace chez la cible : c'est ce qui rend la reconnaissance si
-  précieuse (et si difficile à détecter).
-- Question de synthèse : parmi vos trouvailles, lesquelles auraient pu être évitées côté défense ?
+La reconnaissance **passive** sur des informations publiques est licite ; le **scan actif**, lui, ne
+l'est que sur une cible autorisée (ici, le laboratoire). **En cas de doute, on reste passif.**

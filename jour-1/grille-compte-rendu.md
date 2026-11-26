@@ -12,6 +12,8 @@ Rendre un compte rendu clair et reproductible : commandes exactes, captures util
 
 ## TP 1 — Reconnaissance (OSINT)
 
+**Cible choisie :** _______________________ (organisation réelle · reconnaissance passive uniquement)
+
 **Cartographie de la surface d'attaque**
 
 - Domaine(s) / sous-domaines :
