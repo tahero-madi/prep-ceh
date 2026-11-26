@@ -36,6 +36,15 @@
    lister les sous-domaines visibles.
 4. **Empreinte humaine** — adresses e-mail, format des identifiants (`prenom.nom@…`), technologies
    mentionnées, profils publics.
+5. **Documents exposés (Google dorks)** — rechercher, dans un moteur, des fichiers publics qui
+   laissent fuir des informations internes :
+   ```text
+   site:<domaine> filetype:pdf
+   site:<domaine> filetype:xlsx
+   site:<domaine> (filetype:pdf OR filetype:txt OR filetype:xls OR filetype:xlsx)
+   ```
+   Inspecter ensuite les **métadonnées** des documents trouvés (auteur, logiciel, chemins internes) :
+   elles en disent souvent plus que le contenu.
 
 ## Partie B — Outils de collecte
 
@@ -48,9 +57,6 @@ maltego
 ```
 
 Pour chaque outil, notez **quelle information** il apporte et vérifiez que vous restez en **passif**.
-
-> 💡 **Google dorks / Shodan** : à présenter en démonstration. Comprendre le principe (`site:`,
-> `filetype:`, `intitle:`) sans lancer d'action intrusive.
 
 ## Partie C — Contre-mesures
 
